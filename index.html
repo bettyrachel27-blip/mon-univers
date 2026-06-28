@@ -3,88 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mon Univers</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
+  <title>Mon Univers Betty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="app-shell">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="logo">✦</div>
-        <div><h1>Mon Univers</h1><p>Betty Life Planner</p></div>
+    <aside class="side-panel">
+      <div class="brand-mini">
+        <div class="logo-mark">B</div>
+        <div>
+          <strong>Mon Univers</strong>
+          <span>Betty</span>
+        </div>
       </div>
       <nav>
-        <button class="nav-btn active" data-view="home">Accueil</button>
-        <button class="nav-btn" data-view="agenda">Agenda</button>
-        <button class="nav-btn" data-view="tasks">To-do</button>
-        <button class="nav-btn" data-view="notes">Notes</button>
-        <button class="nav-btn" data-view="budget">Budget</button>
-        <button class="nav-btn" data-view="homecare">Maison</button>
+        <button class="nav-item active" data-page="home">⌂ Accueil</button>
+        <button class="nav-item" data-page="agenda">□ Agenda</button>
+        <button class="nav-item" data-page="tasks">✓ Tâches</button>
+        <button class="nav-item" data-page="notes">✎ Notes</button>
+        <button class="nav-item" data-page="budget">€ Budget</button>
+        <button class="nav-item" data-page="homecare">✦ Maison</button>
       </nav>
+      <div class="side-card">
+        <span>Énergie du jour</span>
+        <p>Avance doucement, mais avance avec confiance.</p>
+      </div>
     </aside>
 
-    <main>
-      <header class="topbar">
-        <div><p class="eyebrow" id="todayLabel"></p><h2>Bonjour Betty 🤎</h2></div>
-        <button class="gold-btn" id="resetDemo">Réinitialiser</button>
-      </header>
+    <main class="phone-frame">
+      <section class="page active" id="home">
+        <header class="hero">
+          <div class="topbar">
+            <button class="icon-btn">☰</button>
+            <button class="bell">♡<small>3</small></button>
+          </div>
+          <div class="floral floral-left"></div>
+          <div class="floral floral-right"></div>
+          <h1>Mon Univers</h1>
+          <div class="script">Betty <span>♥</span></div>
+          <p>Créer ma vie, avec sens & passion</p>
+        </header>
 
-      <section id="home" class="view active">
-        <div class="hero-card">
-          <p class="eyebrow">Message de l'univers</p>
-          <h3 id="universeMessage"></h3>
-          <button class="soft-btn" id="newMessage">Nouveau message</button>
-        </div>
-        <div class="grid two">
-          <div class="card"><h3>Perso</h3><div id="personalSummary"></div></div>
-          <div class="card"><h3>Pro</h3><div id="proSummary"></div></div>
-        </div>
-        <div class="grid three">
-          <div class="stat"><span>RDV aujourd'hui</span><strong id="todayEventsCount">0</strong></div>
-          <div class="stat"><span>Tâches restantes</span><strong id="openTasksCount">0</strong></div>
-          <div class="stat"><span>Budget restant</span><strong id="budgetLeft">0 €</strong></div>
-        </div>
+        <section class="grid intro-grid">
+          <article class="card quote-card wide">
+            <h2>Bonjour Betty ✨</h2>
+            <blockquote>Tu es exactement là où tu dois être.<br>Fais confiance au processus.</blockquote>
+          </article>
+          <article class="card weather-card">
+            <div class="sun">☀</div>
+            <strong>22°</strong>
+            <span>Ensoleillé</span>
+            <small>Aix-les-Bains</small>
+          </article>
+        </section>
+
+        <section class="grid main-grid">
+          <article class="card agenda-card big-card">
+            <div class="card-title"><span>▣</span> Aujourd’hui <small id="todayDate"></small></div>
+            <div class="timeline">
+              <div><b>11:00</b><span>Service déjeuner</span></div>
+              <div><b>14:30</b><span>Réunion d’équipe</span></div>
+              <div><b>18:30</b><span>Service dîner</span></div>
+              <div><b>20:00</b><span>Point du soir</span></div>
+            </div>
+            <button class="soft-btn" data-go="agenda">Voir mon agenda →</button>
+          </article>
+          <article class="card priorities-card">
+            <div class="card-title"><span>★</span> Mes priorités</div>
+            <label><input type="checkbox" checked> Préparer événement</label>
+            <label><input type="checkbox" checked> Suivi budget</label>
+            <label><input type="checkbox"> Sport 30 min</label>
+            <label><input type="checkbox"> Appeler maman</label>
+            <button class="text-btn" data-go="tasks">+ Ajouter une priorité</button>
+          </article>
+          <article class="card progress-card"><div class="card-title">▣ Professionnel</div><div class="ring" style="--p:85">85%</div><p>Objectifs de la semaine<br>4/5 terminés</p></article>
+          <article class="card progress-card"><div class="card-title">♥ Personnel</div><div class="ring" style="--p:60">60%</div><p>Objectifs de la semaine<br>3/5 terminés</p></article>
+          <article class="card budget-mini"><div class="card-title">▤ Budget</div><span>Reste à dépenser</span><strong>560,00 €</strong><small>sur 1 200 €</small><div class="spark"></div><button class="soft-btn" data-go="budget">Voir mon budget →</button></article>
+          <article class="card moment-card"><div class="card-title">☾ Mon moment</div><p>Prends soin de ton corps, c’est le seul endroit où tu es obligée de vivre.</p><button class="dark-btn">Mon message du jour →</button></article>
+          <article class="card inspiration-card"><div class="card-title">Inspiration du jour</div><blockquote>Discipline aujourd’hui,<br>liberté demain.</blockquote><small>— Inconnu</small></article>
+        </section>
       </section>
 
-      <section id="agenda" class="view">
-        <div class="section-head"><h2>Agenda</h2><p>Perso & Pro, avec champ pour futur lien iPhone/iCloud.</p></div>
-        <form id="eventForm" class="form card">
-          <input name="title" placeholder="Titre du rendez-vous" required />
-          <input name="date" type="date" required />
-          <input name="time" type="time" />
-          <select name="type"><option>Perso</option><option>Pro</option><option>Santé</option><option>Famille</option></select>
-          <button>Ajouter</button>
-        </form>
-        <div class="card"><label>Lien calendrier iPhone / iCloud / ICS</label><input id="icsLink" placeholder="https://.../calendar.ics" /><small>Version 1 : stockage du lien. Version 2 : synchronisation.</small></div>
-        <div id="eventsList" class="list"></div>
-      </section>
+      <section class="page" id="agenda"><h2>Agenda</h2><p class="subtitle">Ajoute tes rendez-vous perso et pro. La synchronisation iPhone sera ajoutée ensuite via calendrier iCloud/ICS.</p><div class="form-row"><input id="eventText" placeholder="Ex : RDV coiffeur 15h"><button onclick="addItem('eventText','eventList')">Ajouter</button></div><ul id="eventList" class="list"></ul></section>
+      <section class="page" id="tasks"><h2>To-do list</h2><p class="subtitle">Priorités du jour, perso et pro.</p><div class="form-row"><input id="taskText" placeholder="Nouvelle tâche"><button onclick="addItem('taskText','taskList',true)">Ajouter</button></div><ul id="taskList" class="list checklist"></ul></section>
+      <section class="page" id="notes"><h2>Notes</h2><p class="subtitle">Un endroit pour vider ta tête.</p><textarea id="noteBox" placeholder="Écris ici tes notes perso ou pro..."></textarea><button class="dark-btn full" onclick="saveNote()">Enregistrer la note</button><div id="savedNotes" class="notes-list"></div></section>
+      <section class="page" id="budget"><h2>Budget</h2><p class="subtitle">Suivi simple de tes dépenses du mois.</p><div class="budget-total"><span>Reste estimé</span><strong>560,00 €</strong></div><div class="form-row"><input id="expenseText" placeholder="Ex : courses 42€"><button onclick="addItem('expenseText','expenseList')">Ajouter</button></div><ul id="expenseList" class="list"></ul></section>
+      <section class="page" id="homecare"><h2>Maison</h2><p class="subtitle">Ménage, rangement, lessive, administratif.</p><div class="routine"><label><input type="checkbox"> Cuisine</label><label><input type="checkbox"> Aspirateur</label><label><input type="checkbox"> Salle de bain</label><label><input type="checkbox"> Lessive</label><label><input type="checkbox"> Papiers</label></div></section>
 
-      <section id="tasks" class="view">
-        <div class="section-head"><h2>To-do list</h2><p>Ce que tu dois faire sans te surcharger.</p></div>
-        <form id="taskForm" class="form card"><input name="text" placeholder="Nouvelle tâche" required /><select name="category"><option>Perso</option><option>Pro</option><option>Maison</option></select><button>Ajouter</button></form>
-        <div id="tasksList" class="list"></div>
-      </section>
-
-      <section id="notes" class="view">
-        <div class="section-head"><h2>Notes</h2><p>Idées, pensées, infos importantes.</p></div>
-        <form id="noteForm" class="form card"><input name="title" placeholder="Titre" required /><select name="category"><option>Perso</option><option>Pro</option></select><textarea name="body" placeholder="Écris ta note ici..." required></textarea><button>Enregistrer</button></form>
-        <div id="notesList" class="list"></div>
-      </section>
-
-      <section id="budget" class="view">
-        <div class="section-head"><h2>Budget</h2><p>Suivi simple du mois.</p></div>
-        <form id="budgetForm" class="form card"><input name="label" placeholder="Libellé" required /><input name="amount" type="number" step="0.01" placeholder="Montant" required /><select name="type"><option value="income">Revenu</option><option value="expense">Dépense</option></select><button>Ajouter</button></form>
-        <div id="budgetList" class="list"></div>
-      </section>
-
-      <section id="homecare" class="view">
-        <div class="section-head"><h2>Maison</h2><p>Ménage, courses et routines.</p></div>
-        <form id="shoppingForm" class="form card"><input name="item" placeholder="Article de courses" required /><button>Ajouter</button></form>
-        <div class="grid two"><div class="card"><h3>Courses</h3><div id="shoppingList"></div></div><div class="card"><h3>Routine ménage</h3><div id="cleaningList"></div></div></div>
-      </section>
+      <nav class="bottom-nav">
+        <button class="bottom-item active" data-page="home">⌂<span>Accueil</span></button>
+        <button class="bottom-item" data-page="agenda">▣<span>Agenda</span></button>
+        <button class="add-btn" data-page="tasks">+</button>
+        <button class="bottom-item" data-page="notes">✎<span>Notes</span></button>
+        <button class="bottom-item" data-page="budget">◎<span>Profil</span></button>
+      </nav>
     </main>
   </div>
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
