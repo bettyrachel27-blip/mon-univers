@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Univers</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">✦</div>
+        <div><h1>Mon Univers</h1><p>Betty Life Planner</p></div>
+      </div>
+      <nav>
+        <button class="nav-btn active" data-view="home">Accueil</button>
+        <button class="nav-btn" data-view="agenda">Agenda</button>
+        <button class="nav-btn" data-view="tasks">To-do</button>
+        <button class="nav-btn" data-view="notes">Notes</button>
+        <button class="nav-btn" data-view="budget">Budget</button>
+        <button class="nav-btn" data-view="homecare">Maison</button>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div><p class="eyebrow" id="todayLabel"></p><h2>Bonjour Betty 🤎</h2></div>
+        <button class="gold-btn" id="resetDemo">Réinitialiser</button>
+      </header>
+
+      <section id="home" class="view active">
+        <div class="hero-card">
+          <p class="eyebrow">Message de l'univers</p>
+          <h3 id="universeMessage"></h3>
+          <button class="soft-btn" id="newMessage">Nouveau message</button>
+        </div>
+        <div class="grid two">
+          <div class="card"><h3>Perso</h3><div id="personalSummary"></div></div>
+          <div class="card"><h3>Pro</h3><div id="proSummary"></div></div>
+        </div>
+        <div class="grid three">
+          <div class="stat"><span>RDV aujourd'hui</span><strong id="todayEventsCount">0</strong></div>
+          <div class="stat"><span>Tâches restantes</span><strong id="openTasksCount">0</strong></div>
+          <div class="stat"><span>Budget restant</span><strong id="budgetLeft">0 €</strong></div>
+        </div>
+      </section>
+
+      <section id="agenda" class="view">
+        <div class="section-head"><h2>Agenda</h2><p>Perso & Pro, avec champ pour futur lien iPhone/iCloud.</p></div>
+        <form id="eventForm" class="form card">
+          <input name="title" placeholder="Titre du rendez-vous" required />
+          <input name="date" type="date" required />
+          <input name="time" type="time" />
+          <select name="type"><option>Perso</option><option>Pro</option><option>Santé</option><option>Famille</option></select>
+          <button>Ajouter</button>
+        </form>
+        <div class="card"><label>Lien calendrier iPhone / iCloud / ICS</label><input id="icsLink" placeholder="https://.../calendar.ics" /><small>Version 1 : stockage du lien. Version 2 : synchronisation.</small></div>
+        <div id="eventsList" class="list"></div>
+      </section>
+
+      <section id="tasks" class="view">
+        <div class="section-head"><h2>To-do list</h2><p>Ce que tu dois faire sans te surcharger.</p></div>
+        <form id="taskForm" class="form card"><input name="text" placeholder="Nouvelle tâche" required /><select name="category"><option>Perso</option><option>Pro</option><option>Maison</option></select><button>Ajouter</button></form>
+        <div id="tasksList" class="list"></div>
+      </section>
+
+      <section id="notes" class="view">
+        <div class="section-head"><h2>Notes</h2><p>Idées, pensées, infos importantes.</p></div>
+        <form id="noteForm" class="form card"><input name="title" placeholder="Titre" required /><select name="category"><option>Perso</option><option>Pro</option></select><textarea name="body" placeholder="Écris ta note ici..." required></textarea><button>Enregistrer</button></form>
+        <div id="notesList" class="list"></div>
+      </section>
+
+      <section id="budget" class="view">
+        <div class="section-head"><h2>Budget</h2><p>Suivi simple du mois.</p></div>
+        <form id="budgetForm" class="form card"><input name="label" placeholder="Libellé" required /><input name="amount" type="number" step="0.01" placeholder="Montant" required /><select name="type"><option value="income">Revenu</option><option value="expense">Dépense</option></select><button>Ajouter</button></form>
+        <div id="budgetList" class="list"></div>
+      </section>
+
+      <section id="homecare" class="view">
+        <div class="section-head"><h2>Maison</h2><p>Ménage, courses et routines.</p></div>
+        <form id="shoppingForm" class="form card"><input name="item" placeholder="Article de courses" required /><button>Ajouter</button></form>
+        <div class="grid two"><div class="card"><h3>Courses</h3><div id="shoppingList"></div></div><div class="card"><h3>Routine ménage</h3><div id="cleaningList"></div></div></div>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
