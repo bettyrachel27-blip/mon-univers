@@ -1,12 +1,6 @@
-# Mon Univers V6 Premium
+MON UNIVERS V6.1 — DOSSIER PROPRE
 
-Version web installable (PWA) avec :
-- centre de notifications fonctionnel ;
-- briefing « Aujourd’hui » ;
-- agenda, tâches, notes, budget, courses et maison ;
-- données sauvegardées dans le navigateur ;
-- design crème, marron et doré ;
-- installation sur écran d’accueil iPhone et Android.
+Dans GitHub, les fichiers index.html, styles-v6.css, script-v6.js, service-worker-v6.js et manifest.webmanifest doivent être directement à la racine du dépôt, pas dans un sous-dossier.
 
-## Mise en ligne
-Remplacer tous les anciens fichiers du dépôt GitHub par ceux-ci, puis sur Render utiliser **Manual Deploy > Clear build cache & deploy**.
+Après le commit : Render > Manual Deploy > Clear build cache & deploy.
+Puis ouvrir : https://mon-univers.onrender.com/?v=61
