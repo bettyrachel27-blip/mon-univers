@@ -1,4 +1,4 @@
-const CACHE = 'mon-univers-v3-pwa';
+const CACHE = 'mon-univers-v4-1-1-pwa';
 const ASSETS = [
   './', './index.html', './styles.css', './script.js',
   './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'
