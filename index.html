@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#5A4033" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#5a4033" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Mon Univers" />
@@ -13,127 +13,135 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles-v5.css?v=5.0.0" />
+  <link rel="stylesheet" href="styles-v6.css?v=6.0.0" />
 </head>
 <body>
   <div class="app-shell">
-    <aside class="side-panel">
-      <div class="brand-mini">
-        <div class="logo-mark">B</div>
-        <div>
-          <strong>Mon Univers</strong>
-          <span>Betty</span>
-        </div>
-      </div>
+    <aside class="side-panel" id="sidePanel">
+      <div class="brand-mini"><div class="logo-mark">B</div><div><strong>Mon Univers</strong><span>Betty</span></div></div>
       <nav>
         <button class="nav-item active" data-page="home">⌂ Accueil</button>
         <button class="nav-item" data-page="agenda">□ Agenda</button>
         <button class="nav-item" data-page="tasks">✓ Tâches</button>
         <button class="nav-item" data-page="notes">✎ Notes</button>
         <button class="nav-item" data-page="budget">€ Budget</button>
+        <button class="nav-item" data-page="shopping">◌ Courses</button>
         <button class="nav-item" data-page="homecare">✦ Maison</button>
+        <button class="nav-item" data-page="settings">⚙ Réglages</button>
       </nav>
-      <div class="side-card">
-        <span>Énergie du jour</span>
-        <p>Avance doucement, mais avance avec confiance.</p>
-      </div>
+      <div class="side-card"><span>Énergie du jour</span><p id="sideMessage">Avance doucement, mais avance avec confiance.</p></div>
     </aside>
 
     <main class="phone-frame">
       <section class="page active" id="home">
         <header class="hero">
           <div class="topbar">
-            <button class="icon-btn">☰</button>
-            <button type="button" class="bell" id="notificationBtn" title="Mes notifications" aria-label="Ouvrir les notifications"><span class="bell-icon" aria-hidden="true">&#128276;</span><small id="notificationCount">3</small></button>
+            <button class="icon-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+            <div class="top-actions">
+              <button class="today-pill" id="todayBriefBtn">Aujourd’hui</button>
+              <button type="button" class="bell" id="notificationBtn" aria-label="Ouvrir les notifications"><span aria-hidden="true">🔔</span><small id="notificationCount">0</small></button>
+            </div>
           </div>
-          <div class="floral floral-left"></div>
-          <div class="floral floral-right"></div>
-          <h1>Mon Univers</h1>
-          <div class="script">Betty <span>♥</span></div>
-          <p>Créer ma vie, avec sens & passion</p>
+          <div class="floral floral-left"></div><div class="floral floral-right"></div>
+          <h1>Mon Univers</h1><div class="script">Betty <span>♥</span></div><p>Créer ma vie, avec sens & passion</p>
         </header>
 
         <section class="grid intro-grid">
-          <article class="card quote-card wide">
-            <h2>Bonjour Betty ✨</h2>
-            <blockquote>Tu es exactement là où tu dois être.<br>Fais confiance au processus.</blockquote>
-          </article>
-          <article class="card weather-card">
-            <div class="sun">☀</div>
-            <strong>22°</strong>
-            <span>Ensoleillé</span>
-            <small>Aix-les-Bains</small>
-          </article>
+          <article class="card quote-card wide"><h2>Bonjour Betty ✨</h2><blockquote id="dailyMessage"></blockquote><button class="text-btn" id="newMessageBtn">Nouveau message ✦</button></article>
+          <article class="card weather-card"><div class="sun">☀</div><strong>22°</strong><span>Ensoleillé</span><small>Aix-les-Bains</small></article>
         </section>
 
         <section class="grid main-grid">
           <article class="card agenda-card big-card">
             <div class="card-title"><span>▣</span> Aujourd’hui <small id="todayDate"></small></div>
-            <div class="timeline">
-              <div><b>11:00</b><span>Service déjeuner</span></div>
-              <div><b>14:30</b><span>Réunion d’équipe</span></div>
-              <div><b>18:30</b><span>Service dîner</span></div>
-              <div><b>20:00</b><span>Point du soir</span></div>
-            </div>
+            <div class="timeline" id="homeAgenda"></div>
             <button class="soft-btn" data-go="agenda">Voir mon agenda →</button>
           </article>
           <article class="card priorities-card">
             <div class="card-title"><span>★</span> Mes priorités</div>
-            <label><input type="checkbox" checked> Préparer événement</label>
-            <label><input type="checkbox" checked> Suivi budget</label>
-            <label><input type="checkbox"> Sport 30 min</label>
-            <label><input type="checkbox"> Appeler maman</label>
+            <div id="homePriorities"></div>
             <button class="text-btn" data-go="tasks">+ Ajouter une priorité</button>
           </article>
-          <article class="card progress-card"><div class="card-title">▣ Professionnel</div><div class="ring" style="--p:85">85%</div><p>Objectifs de la semaine<br>4/5 terminés</p></article>
-          <article class="card progress-card"><div class="card-title">♥ Personnel</div><div class="ring" style="--p:60">60%</div><p>Objectifs de la semaine<br>3/5 terminés</p></article>
-          <article class="card budget-mini"><div class="card-title">▤ Budget</div><span>Reste à dépenser</span><strong>560,00 €</strong><small>sur 1 200 €</small><div class="spark"></div><button class="soft-btn" data-go="budget">Voir mon budget →</button></article>
-          <article class="card moment-card"><div class="card-title">☾ Mon moment</div><p>Prends soin de ton corps, c’est le seul endroit où tu es obligée de vivre.</p><button class="dark-btn">Mon message du jour →</button></article>
-          <article class="card inspiration-card"><div class="card-title">Inspiration du jour</div><blockquote>Discipline aujourd’hui,<br>liberté demain.</blockquote><small>— Inconnu</small></article>
+          <article class="card progress-card"><div class="card-title">▣ Professionnel</div><div class="ring" id="proRing" style="--p:0">0%</div><p id="proProgress">Aucune tâche</p></article>
+          <article class="card progress-card"><div class="card-title">♥ Personnel</div><div class="ring" id="personalRing" style="--p:0">0%</div><p id="personalProgress">Aucune tâche</p></article>
+          <article class="card budget-mini"><div class="card-title">▤ Budget</div><span>Reste à dépenser</span><strong id="homeBudgetRemaining">0,00 €</strong><small id="homeBudgetTotal">sur 0 €</small><div class="budget-bar"><i id="homeBudgetBar"></i></div><button class="soft-btn" data-go="budget">Voir mon budget →</button></article>
+          <article class="card moment-card"><div class="card-title">☾ Mon moment</div><p>Prends soin de ton corps, c’est le seul endroit où tu es obligée de vivre.</p><button class="dark-btn" id="momentBtn">Mon message du jour →</button></article>
+          <article class="card inspiration-card"><div class="card-title">Inspiration du jour</div><blockquote id="inspirationText"></blockquote><small>— Mon Univers</small></article>
         </section>
       </section>
 
-      <section class="page" id="agenda"><h2>Agenda</h2><p class="subtitle">Ajoute tes rendez-vous perso et pro. La synchronisation iPhone sera ajoutée ensuite via calendrier iCloud/ICS.</p><div class="form-row"><input id="eventText" placeholder="Ex : RDV coiffeur 15h"><button onclick="addItem('eventText','eventList')">Ajouter</button></div><ul id="eventList" class="list"></ul></section>
-      <section class="page" id="tasks"><h2>To-do list</h2><p class="subtitle">Priorités du jour, perso et pro.</p><div class="form-row"><input id="taskText" placeholder="Nouvelle tâche"><button onclick="addItem('taskText','taskList',true)">Ajouter</button></div><ul id="taskList" class="list checklist"></ul></section>
-      <section class="page" id="notes"><h2>Notes</h2><p class="subtitle">Un endroit pour vider ta tête.</p><textarea id="noteBox" placeholder="Écris ici tes notes perso ou pro..."></textarea><button class="dark-btn full" onclick="saveNote()">Enregistrer la note</button><div id="savedNotes" class="notes-list"></div></section>
-      <section class="page" id="budget"><h2>Budget</h2><p class="subtitle">Suivi simple de tes dépenses du mois.</p><div class="budget-total"><span>Reste estimé</span><strong>560,00 €</strong></div><div class="form-row"><input id="expenseText" placeholder="Ex : courses 42€"><button onclick="addItem('expenseText','expenseList')">Ajouter</button></div><ul id="expenseList" class="list"></ul></section>
-      <section class="page" id="homecare"><h2>Maison</h2><p class="subtitle">Ménage, rangement, lessive, administratif.</p><div class="routine"><label><input type="checkbox"> Cuisine</label><label><input type="checkbox"> Aspirateur</label><label><input type="checkbox"> Salle de bain</label><label><input type="checkbox"> Lessive</label><label><input type="checkbox"> Papiers</label></div></section>
+      <section class="page" id="agenda">
+        <div class="page-head"><div><h2>Agenda</h2><p class="subtitle">Tes rendez-vous personnels et professionnels.</p></div><button class="gold-btn" data-open-modal="eventModal">+ Rendez-vous</button></div>
+        <div class="filter-row"><button class="chip active" data-event-filter="all">Tous</button><button class="chip" data-event-filter="pro">Pro</button><button class="chip" data-event-filter="perso">Perso</button></div>
+        <div id="eventList" class="stack-list"></div>
+      </section>
 
+      <section class="page" id="tasks">
+        <div class="page-head"><div><h2>To-do list</h2><p class="subtitle">Priorités du jour, perso et pro.</p></div><button class="gold-btn" data-open-modal="taskModal">+ Tâche</button></div>
+        <div class="filter-row"><button class="chip active" data-task-filter="all">Toutes</button><button class="chip" data-task-filter="pro">Pro</button><button class="chip" data-task-filter="perso">Perso</button><button class="chip" data-task-filter="pending">À faire</button></div>
+        <div id="taskList" class="stack-list"></div>
+      </section>
 
-      <div class="notification-overlay" id="notificationOverlay" aria-hidden="true">
-        <div class="notification-backdrop" data-close-notifications></div>
-        <aside class="notification-panel" role="dialog" aria-modal="true" aria-labelledby="notificationTitle">
-          <div class="notification-header">
-            <div>
-              <span class="eyebrow">Mon Univers</span>
-              <h3 id="notificationTitle">Mes notifications</h3>
-            </div>
-            <button class="close-notifications" data-close-notifications aria-label="Fermer">×</button>
-          </div>
-          <div class="notification-actions">
-            <span id="notificationSummary">3 nouvelles alertes</span>
-            <button id="markAllRead">Tout marquer comme lu</button>
-          </div>
-          <div class="notification-list" id="notificationList"></div>
-          <button class="install-help" id="installHelpBtn">Ajouter Mon Univers à mon écran d’accueil</button>
-        </aside>
-      </div>
+      <section class="page" id="notes">
+        <div class="page-head"><div><h2>Notes</h2><p class="subtitle">Un endroit pour vider ta tête.</p></div><button class="gold-btn" data-open-modal="noteModal">+ Note</button></div>
+        <div id="savedNotes" class="notes-grid"></div>
+      </section>
+
+      <section class="page" id="budget">
+        <div class="page-head"><div><h2>Budget</h2><p class="subtitle">Suivi du mois et alertes de dépenses.</p></div><button class="gold-btn" data-open-modal="expenseModal">+ Dépense</button></div>
+        <div class="budget-dashboard">
+          <article class="summary-card"><span>Budget mensuel</span><strong id="budgetLimitLabel">0 €</strong><button class="text-btn" id="editBudgetBtn">Modifier</button></article>
+          <article class="summary-card"><span>Dépensé</span><strong id="spentLabel">0 €</strong></article>
+          <article class="summary-card accent"><span>Reste</span><strong id="remainingLabel">0 €</strong></article>
+        </div>
+        <div class="large-progress"><i id="budgetProgress"></i></div>
+        <div id="expenseList" class="stack-list"></div>
+      </section>
+
+      <section class="page" id="shopping">
+        <div class="page-head"><div><h2>Courses</h2><p class="subtitle">Ta liste organisée et facile à cocher.</p></div><button class="gold-btn" data-open-modal="shoppingModal">+ Article</button></div>
+        <div id="shoppingList" class="stack-list"></div>
+      </section>
+
+      <section class="page" id="homecare">
+        <div class="page-head"><div><h2>Maison</h2><p class="subtitle">Ménage, rangement et administratif.</p></div><button class="gold-btn" id="resetRoutineBtn">Réinitialiser</button></div>
+        <div id="routineList" class="routine-grid"></div>
+      </section>
+
+      <section class="page" id="settings">
+        <h2>Réglages</h2><p class="subtitle">Personnalise Mon Univers.</p>
+        <div class="settings-list">
+          <label class="setting-row"><span>Nom affiché</span><input id="displayName" value="Betty"></label>
+          <label class="setting-row"><span>Heure du message quotidien</span><input id="dailyTime" type="time" value="08:00"></label>
+          <label class="setting-row"><span>Seuil d’alerte budget (€)</span><input id="budgetThreshold" type="number" value="200"></label>
+          <button class="dark-btn full" id="saveSettingsBtn">Enregistrer mes réglages</button>
+          <button class="soft-btn full" id="installHelpBtn">Installer sur mon écran d’accueil</button>
+        </div>
+      </section>
 
       <nav class="bottom-nav">
         <button class="bottom-item active" data-page="home">⌂<span>Accueil</span></button>
         <button class="bottom-item" data-page="agenda">▣<span>Agenda</span></button>
-        <button class="add-btn" data-page="tasks">+</button>
+        <button class="add-btn" id="quickAddBtn">+</button>
         <button class="bottom-item" data-page="notes">✎<span>Notes</span></button>
-        <button class="bottom-item" data-page="budget">◎<span>Profil</span></button>
+        <button class="bottom-item" data-page="budget">◎<span>Budget</span></button>
       </nav>
     </main>
   </div>
-  <script src="script-v5.js?v=5.0.0"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('service-worker-v5.js?v=5.0.0').then(reg => reg.update()));
-    }
-  </script>
-<div id="appVersion" aria-hidden="true">v5</div>
+
+  <div class="notification-overlay" id="notificationOverlay" aria-hidden="true"><div class="notification-backdrop" data-close-notifications></div><aside class="notification-panel" role="dialog" aria-modal="true"><div class="notification-header"><div><span class="eyebrow">Mon Univers</span><h3>Mes notifications</h3></div><button class="close-notifications" data-close-notifications>×</button></div><div class="notification-actions"><span id="notificationSummary"></span><button id="markAllRead">Tout marquer comme lu</button></div><div class="notification-list" id="notificationList"></div></aside></div>
+
+  <div class="modal" id="todayModal"><div class="modal-backdrop" data-close-modal></div><div class="modal-card"><button class="modal-close" data-close-modal>×</button><span class="eyebrow">Ma journée</span><h3>Bonjour Betty ☀️</h3><div id="todayBriefContent"></div></div></div>
+  <div class="modal" id="quickAddModal"><div class="modal-backdrop" data-close-modal></div><div class="modal-card"><button class="modal-close" data-close-modal>×</button><h3>Ajouter rapidement</h3><div class="quick-grid"><button data-open-modal="eventModal">📅 Rendez-vous</button><button data-open-modal="taskModal">✓ Tâche</button><button data-open-modal="noteModal">✎ Note</button><button data-open-modal="expenseModal">€ Dépense</button><button data-open-modal="shoppingModal">🛒 Course</button></div></div></div>
+
+  <div class="modal" id="eventModal"><div class="modal-backdrop" data-close-modal></div><form class="modal-card" id="eventForm"><button type="button" class="modal-close" data-close-modal>×</button><h3>Nouveau rendez-vous</h3><input name="title" placeholder="Titre" required><div class="form-grid"><input name="date" type="date" required><input name="time" type="time" required></div><select name="category"><option value="perso">Personnel</option><option value="pro">Professionnel</option></select><select name="reminder"><option value="0">À l’heure</option><option value="15">15 min avant</option><option value="30">30 min avant</option><option value="60">1 h avant</option></select><button class="dark-btn full">Enregistrer</button></form></div>
+  <div class="modal" id="taskModal"><div class="modal-backdrop" data-close-modal></div><form class="modal-card" id="taskForm"><button type="button" class="modal-close" data-close-modal>×</button><h3>Nouvelle tâche</h3><input name="title" placeholder="Tâche à faire" required><div class="form-grid"><select name="category"><option value="perso">Personnel</option><option value="pro">Professionnel</option></select><input name="due" type="date"></div><label class="checkline"><input name="priority" type="checkbox"> Priorité importante</label><button class="dark-btn full">Ajouter</button></form></div>
+  <div class="modal" id="noteModal"><div class="modal-backdrop" data-close-modal></div><form class="modal-card" id="noteForm"><button type="button" class="modal-close" data-close-modal>×</button><h3>Nouvelle note</h3><input name="title" placeholder="Titre"><select name="category"><option value="perso">Personnel</option><option value="pro">Professionnel</option><option value="idee">Idée</option></select><textarea name="content" placeholder="Écris ici..." required></textarea><button class="dark-btn full">Enregistrer</button></form></div>
+  <div class="modal" id="expenseModal"><div class="modal-backdrop" data-close-modal></div><form class="modal-card" id="expenseForm"><button type="button" class="modal-close" data-close-modal>×</button><h3>Nouvelle dépense</h3><input name="label" placeholder="Ex : Courses" required><div class="form-grid"><input name="amount" type="number" step="0.01" placeholder="Montant" required><select name="category"><option>Courses</option><option>Restaurant</option><option>Maison</option><option>Transport</option><option>Loisirs</option><option>Autre</option></select></div><button class="dark-btn full">Ajouter</button></form></div>
+  <div class="modal" id="shoppingModal"><div class="modal-backdrop" data-close-modal></div><form class="modal-card" id="shoppingForm"><button type="button" class="modal-close" data-close-modal>×</button><h3>Ajouter aux courses</h3><input name="title" placeholder="Article" required><select name="category"><option>Fruits & légumes</option><option>Frais</option><option>Épicerie</option><option>Maison</option><option>Beauté</option><option>Autre</option></select><button class="dark-btn full">Ajouter</button></form></div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script-v6.js?v=6.0.0"></script>
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('service-worker-v6.js?v=6.0.0').then(r=>r.update()));}</script>
 </body>
 </html>
