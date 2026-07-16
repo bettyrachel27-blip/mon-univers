@@ -10,3 +10,24 @@ function saveState(){localStorage.setItem('monUniversV2',JSON.stringify({events:
 function html(id){return document.getElementById(id).innerHTML}
 (function load(){const raw=localStorage.getItem('monUniversV2');if(!raw)return;try{const s=JSON.parse(raw);document.getElementById('eventList').innerHTML=s.events||'';document.getElementById('taskList').innerHTML=s.tasks||'';document.getElementById('expenseList').innerHTML=s.expenses||'';document.getElementById('savedNotes').innerHTML=s.notes||'';}catch(e){}})();
 document.addEventListener('change',saveState);
+
+// Installation PWA (Android/Chrome). Sur iPhone : Safari > Partager > Ajouter à l’écran d’accueil.
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (event) => {
+  event.preventDefault();
+  deferredPrompt = event;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const installBtn = document.getElementById('installBtn');
+  if (!installBtn) return;
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      return;
+    }
+    alert("Sur iPhone : ouvre ce site dans Safari, touche Partager, puis « Ajouter à l’écran d’accueil ».");
+  });
+});

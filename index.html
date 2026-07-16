@@ -2,7 +2,13 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#5A4033" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Mon Univers" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
   <title>Mon Univers Betty</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +44,7 @@
         <header class="hero">
           <div class="topbar">
             <button class="icon-btn">☰</button>
-            <button class="bell">♡<small>3</small></button>
+            <button class="bell" id="installBtn" title="Installer l’application">♡<small>3</small></button>
           </div>
           <div class="floral floral-left"></div>
           <div class="floral floral-right"></div>
@@ -103,5 +109,10 @@
     </main>
   </div>
   <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('service-worker.js'));
+    }
+  </script>
 </body>
 </html>
