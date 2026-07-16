@@ -44,7 +44,7 @@
         <header class="hero">
           <div class="topbar">
             <button class="icon-btn">☰</button>
-            <button class="bell" id="installBtn" title="Installer l’application">♡<small>3</small></button>
+            <button class="bell" id="notificationBtn" title="Mes notifications" aria-label="Ouvrir les notifications">♡<small id="notificationCount">3</small></button>
           </div>
           <div class="floral floral-left"></div>
           <div class="floral floral-right"></div>
@@ -98,6 +98,26 @@
       <section class="page" id="notes"><h2>Notes</h2><p class="subtitle">Un endroit pour vider ta tête.</p><textarea id="noteBox" placeholder="Écris ici tes notes perso ou pro..."></textarea><button class="dark-btn full" onclick="saveNote()">Enregistrer la note</button><div id="savedNotes" class="notes-list"></div></section>
       <section class="page" id="budget"><h2>Budget</h2><p class="subtitle">Suivi simple de tes dépenses du mois.</p><div class="budget-total"><span>Reste estimé</span><strong>560,00 €</strong></div><div class="form-row"><input id="expenseText" placeholder="Ex : courses 42€"><button onclick="addItem('expenseText','expenseList')">Ajouter</button></div><ul id="expenseList" class="list"></ul></section>
       <section class="page" id="homecare"><h2>Maison</h2><p class="subtitle">Ménage, rangement, lessive, administratif.</p><div class="routine"><label><input type="checkbox"> Cuisine</label><label><input type="checkbox"> Aspirateur</label><label><input type="checkbox"> Salle de bain</label><label><input type="checkbox"> Lessive</label><label><input type="checkbox"> Papiers</label></div></section>
+
+
+      <div class="notification-overlay" id="notificationOverlay" aria-hidden="true">
+        <div class="notification-backdrop" data-close-notifications></div>
+        <aside class="notification-panel" role="dialog" aria-modal="true" aria-labelledby="notificationTitle">
+          <div class="notification-header">
+            <div>
+              <span class="eyebrow">Mon Univers</span>
+              <h3 id="notificationTitle">Mes notifications</h3>
+            </div>
+            <button class="close-notifications" data-close-notifications aria-label="Fermer">×</button>
+          </div>
+          <div class="notification-actions">
+            <span id="notificationSummary">3 nouvelles alertes</span>
+            <button id="markAllRead">Tout marquer comme lu</button>
+          </div>
+          <div class="notification-list" id="notificationList"></div>
+          <button class="install-help" id="installHelpBtn">Ajouter Mon Univers à mon écran d’accueil</button>
+        </aside>
+      </div>
 
       <nav class="bottom-nav">
         <button class="bottom-item active" data-page="home">⌂<span>Accueil</span></button>
