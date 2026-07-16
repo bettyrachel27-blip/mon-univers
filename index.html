@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-v5.css?v=5.0.0" />
 </head>
 <body>
   <div class="app-shell">
@@ -44,7 +44,7 @@
         <header class="hero">
           <div class="topbar">
             <button class="icon-btn">☰</button>
-            <button class="bell" id="notificationBtn" title="Mes notifications" aria-label="Ouvrir les notifications"><span class="bell-icon" aria-hidden="true">🔔</span><small id="notificationCount">3</small></button>
+            <button type="button" class="bell" id="notificationBtn" title="Mes notifications" aria-label="Ouvrir les notifications"><span class="bell-icon" aria-hidden="true">&#128276;</span><small id="notificationCount">3</small></button>
           </div>
           <div class="floral floral-left"></div>
           <div class="floral floral-right"></div>
@@ -128,11 +128,12 @@
       </nav>
     </main>
   </div>
-  <script src="script.js"></script>
+  <script src="script-v5.js?v=5.0.0"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('service-worker.js'));
+      window.addEventListener('load', () => navigator.serviceWorker.register('service-worker-v5.js?v=5.0.0').then(reg => reg.update()));
     }
   </script>
+<div id="appVersion" aria-hidden="true">v5</div>
 </body>
 </html>
